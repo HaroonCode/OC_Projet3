@@ -1,49 +1,20 @@
 from pygame.locals import *
 import pygame
+import load_class
 
-# Create the player class for the movement
-class Player:
-    x = 44
-    y = 44
-    speed = 1
 
-    def moveRight(self):
-        self.x = self.x + self.speed
 
-    def moveLeft(self):
-        self.x = self.x - self.speed
+def draw(self, display_surf, image_surf):
+    bx = 0
+    by = 0
+    for i in range(0, self.M * self.N):
+        if self.maze[bx + (by * self.M)] == 1:
+            display_surf.blit(image_surf, (bx * 44, by * 44))
 
-    def moveUp(self):
-        self.y = self.y - self.speed
-
-    def moveDown(self):
-        self.y = self.y + self.speed
-
-# Create the Maze
-class Maze:
-    def __init__(self):
-        self.M = 10
-        self.N = 8
-        self.maze = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                     1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                     1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                     1, 0, 1, 1, 1, 1, 1, 1, 0, 1,
-                     1, 0, 1, 0, 0, 0, 0, 0, 0, 1,
-                     1, 0, 1, 0, 1, 1, 1, 1, 0, 1,
-                     1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-                     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]
-
-    def draw(self, display_surf, image_surf):
-        bx = 0
-        by = 0
-        for i in range(0, self.M * self.N):
-            if self.maze[bx + (by * self.M)] == 1:
-                display_surf.blit(image_surf, (bx * 44, by * 44))
-
-            bx = bx + 1
-            if bx > self.M - 1:
-                bx = 0
-                by = by + 1
+        bx = bx + 1
+        if bx > self.M - 1:
+            bx = 0
+            by = by + 1
 
 
 class App:
@@ -56,8 +27,8 @@ class App:
         self._display_surf = None
         self._image_surf = None
         self._block_surf = None
-        self.player = Player()
-        self.maze = Maze()
+        self.player = load_class.Player
+        self.maze = load_class.Maze
 
     def on_init(self):
         pygame.init()
