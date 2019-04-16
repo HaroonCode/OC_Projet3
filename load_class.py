@@ -1,3 +1,5 @@
+#Contain all project class.
+
 # Create the player class for the movement
 class Player:
     x = 44
@@ -20,8 +22,8 @@ class Player:
 # Create the Maze
 class Maze:
     def __init__(self):
-        self.M = 10 # Attribut plus parlant
-        self.N = 8
+        self.latitude = 10 # Attribut plus parlant
+        self.longitude = 8
         self.maze = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                      1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
                      1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
@@ -30,3 +32,17 @@ class Maze:
                      1, 0, 1, 0, 1, 1, 1, 1, 0, 1,
                      1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
                      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ]
+
+
+# Change the maze to be dynamic.
+# First we need to create the map with case
+
+class MapGeneration:
+    def __init__(self,longitude,latitude,widthspace):
+        self.longitude = longitude
+        self.latitude = latitude
+        self.widthspace = widthspace
+
+    def GenMaze:
+        for longitutde in range(self.longitude)
+            
