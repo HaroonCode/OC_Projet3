@@ -1,5 +1,8 @@
 #Contain all project class.
 
+# Un fichier par class et pas un fichier qui contient toutes les classes
+#
+
 # Create the player class for the movement
 class Player:
     x = 44
@@ -45,4 +48,4 @@ class MapGeneration:
 
     def GenMaze:
         for longitutde in range(self.longitude)
-            
+
