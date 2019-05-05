@@ -15,7 +15,7 @@ class Level:
         pos_x = 0
         pos_y = 0
         while self.maze_map[pos_y][pos_x] != " ":
-            pos_x = randint(0, (map_lenght - 1))
+            pos_x = randint(0, (map_length - 1))
             pos_y = randint(0, (map_height - 1))
         self.maze_map[pos_y][pos_x] = "*"
         return pos_x, pos_y

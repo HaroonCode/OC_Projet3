@@ -1,7 +1,7 @@
 # Constant file include all the constant i needed for the game.
 
 map_height = 15
-map_lenght = 15
+map_length = 15
 tile_size = 40
 
 

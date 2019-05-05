@@ -17,10 +17,11 @@ from constants import *
 def main():
     pygame.init()
     # Setup the window (15*30, 15*30) : Resolution = 450,450
-    screen = pygame.display.set_mode((map_height * tile_size, map_lenght * tile_size))
+    screen = pygame.display.set_mode((map_height * tile_size, map_length * tile_size))
 
     config = loader.load_json("config.json")
     images = loader.Images(config)
+
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
     mac_gyver = game_class.Character(lvl)
 

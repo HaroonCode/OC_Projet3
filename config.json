@@ -2,6 +2,7 @@
   "bloc": "images/bloc.png",
   "mac_gyver": "images/mac_gyver.png",
   "guardian": "images/guardian.png",
+
   "items": {"needle": {"img": "images/needle.png"},
             "tube": {"img": "images/tube.png"},
             "ether": {"img": "images/ether.png"}}
