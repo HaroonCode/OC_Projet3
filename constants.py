@@ -9,3 +9,7 @@ left = 0
 right = 1
 up = 2
 down = 3
+
+Win = 0
+Lost = 0
+In_Maze = 0

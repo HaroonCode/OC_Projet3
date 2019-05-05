@@ -28,6 +28,10 @@ class Item:
         self.pos_y = position[1]
         self.show = True
 
+    @property
+    def pixel_position(self):
+        # Pixel position of item
+        return [self.pos_x * tile_size, self.pos_y * tile_size]
 
 class Character:
     # Character
@@ -62,6 +66,11 @@ class Character:
                     self.lvl.items[item].show):
                 self.num_items += 1
                 self.lvl.items[item].show = False
+
+    @property
+    def pixel_position(self):
+        # pixel position of the character
+        return [self.pos_x * tile_size, self.pos_y * tile_size]
 
     def status(self):
         if self.lvl.maze_map[self.pos_y][self.pos_x] == '.':

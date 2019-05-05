@@ -25,7 +25,7 @@ def main():
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
     mac_gyver = game_class.Character(lvl)
 
-    display.draw(lvl, images, screen)
+    display.draw(lvl,mac_gyver, images, screen)
 
     continue_game = True
     end_game = False
@@ -53,7 +53,7 @@ def main():
                 else:
                     continue_game = False
 
-                display.draw(lvl, images, screen)
+                display.draw(lvl,mac_gyver, images, screen)
 
 
 if __name__ == "__main__":
