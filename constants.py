@@ -10,6 +10,6 @@ right = 1
 up = 2
 down = 3
 
-WIN = 0
-LOST = 0
+WIN = 2
+LOST = 1
 IN_MAZE = 0

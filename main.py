@@ -25,12 +25,13 @@ def main():
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
     mac_gyver = game_class.Character(lvl, config["items"])
 
-    display.draw(lvl,mac_gyver, images, screen)
+    display.draw(lvl, mac_gyver, images, screen)
 
     continue_game = True
     end_game = False
 
     # Main game loop
+    print("Have fun !")
     while continue_game:
         for event in pygame.event.get():   # iteration in all events
             if event.type == QUIT:
@@ -46,12 +47,12 @@ def main():
                     elif event.key == K_DOWN:
                         mac_gyver.move_to(down)
 
-                    if mac_gyver.status == WIN:
+                    if mac_gyver.status() == WIN:
                         print("You win")
-                    elif mac_gyver.status == LOST:
+                    elif mac_gyver.status() == LOST:
                         print("You loose")
 
-                    if mac_gyver.status != IN_MAZE:
+                    if mac_gyver.status() != IN_MAZE:
                         print("\nDo you want to replay (y/n) ?")
                         end_game = True
                 else:

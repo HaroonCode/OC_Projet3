@@ -88,6 +88,8 @@ class Character:
                     self.lvl.items[item].show):
                 self.num_items += 1
                 self.lvl.items[item].show = False
+                if self.item_msg[item] != None:
+                    print(self.item_msg[item])
 
     @classmethod
     def _initial_position(cls, lvl):
@@ -107,7 +109,7 @@ class Character:
         # pixel position of the character
         return [self.pos_x * tile_size, self.pos_y * tile_size]
 
-    @property
+    #@property
     def status(self):
         # Character status - Win or loose
         if self.lvl.maze_map[self.pos_y][self.pos_x] == '.':
