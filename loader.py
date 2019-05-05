@@ -1,4 +1,4 @@
-# Loader used to load all physical contant i needed (block, image etc...)
+# Loader used to load all physical content i needed (block, image etc...)
 import json
 import pygame
 
@@ -8,6 +8,7 @@ class Images:
     # Load image
     def __init__(self, config):
         self.brick = self.load_image(config["bloc"])
+        self.floor = self.load_image(config["floor"])
         self.mac_gyver = self.load_image(config["mac_gyver"])
         self.guardian = self.load_image(config["guardian"])
         self.items = {}

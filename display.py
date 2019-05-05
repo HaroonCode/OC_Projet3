@@ -13,6 +13,8 @@ def draw(lvl, mac_gyver, images, screen):
 
             if case == "#":
                 screen.blit(images.brick, img_pos)
+            else:
+                screen.blit(images.floor, img_pos)
 
             if case == "." and mac_gyver.status != Win:
                 screen.blit(images.guardian, img_pos)

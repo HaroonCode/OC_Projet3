@@ -10,15 +10,11 @@ class Level:
         for item in items:
             self.items[item] = Item(self.random_position())
 
-    def random_position(self):
-        # Random item position in map.
-        pos_x = 0
-        pos_y = 0
-        while self.maze_map[pos_y][pos_x] != " ":
-            pos_x = randint(0, (map_length - 1))
-            pos_y = randint(0, (map_height - 1))
-        self.maze_map[pos_y][pos_x] = "*"
-        return pos_x, pos_y
+    def reset(self):
+        # Place random items
+        for item in self.items:
+            self.maze_map[self.items[item].pos_y][self.items[item].pos_x] = " "
+            self.items[item] = Item(self.random_position())
 
     def free_path(self, pos_x, pos_y, direction):
         # Check if it's a valid path.
@@ -30,6 +26,16 @@ class Level:
                 self.maze_map[pos_y-1][pos_x] != "#" or
                 direction == down and pos_y < (map_height - 1) and
                 self.maze_map[pos_y+1][pos_x] != "#")
+
+    def random_position(self):
+        # Random item position in map.
+        pos_x = 0
+        pos_y = 0
+        while self.maze_map[pos_y][pos_x] != " ":
+            pos_x = randint(0, (map_length - 1))
+            pos_y = randint(0, (map_height - 1))
+        self.maze_map[pos_y][pos_x] = "*"
+        return pos_x, pos_y
 
 
 class Item:
@@ -44,6 +50,7 @@ class Item:
         # Pixel position of item
         return [self.pos_x * tile_size, self.pos_y * tile_size]
 
+
 class Character:
     # Character
     def __init__(self, lvl):
@@ -52,7 +59,7 @@ class Character:
 
     def reset(self):
         # Initial position of the character (top left)
-        self.pos_y, self.pos_x = (1, 1)
+        self.pos_y, self.pos_x = self._initial_position(self.lvl)
         self.num_items = 0
 
     def move_to(self, direction):
@@ -79,14 +86,29 @@ class Character:
                 self.num_items += 1
                 self.lvl.items[item].show = False
 
+    @classmethod
+    def _initial_position(cls, lvl):
+        """Get initial character's position from the maze_map"""
+        num_line = 0
+        for line in lvl.maze_map:
+            num_column = 0
+            for case in line:
+                if case == "@":
+                    return (num_line, num_column)
+                num_column += 1
+            num_line += 1
+        print("Initial character's position not found")
+
     @property
     def pixel_position(self):
         # pixel position of the character
         return [self.pos_x * tile_size, self.pos_y * tile_size]
 
+    @property
     def status(self):
+        # Character status - Win or loose
         if self.lvl.maze_map[self.pos_y][self.pos_x] == '.':
             if self.num_items == len(self.lvl.items):
-                return True
-            else:
-                return False
+                return Win
+            return Lost
+        return In_Maze

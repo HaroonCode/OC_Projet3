@@ -45,15 +45,25 @@ def main():
                         mac_gyver.move_to(up)
                     elif event.key == K_DOWN:
                         mac_gyver.move_to(down)
-                    screen.fill((0,0,0)) # Fill the screen after character movement
-                    if mac_gyver.status == True:
-                        print("Win")
-                    elif mac_gyver.status == False:
-                        print("Loose")
-                else:
-                    continue_game = False
 
-                display.draw(lvl,mac_gyver, images, screen)
+                    if mac_gyver.status == Win:
+                        print("You win")
+                    elif mac_gyver.status == Lost:
+                        print("You loose")
+
+                    if mac_gyver.status != In_Maze:
+                        print("\nDo you want to replay (y/n) ?")
+                        end_game = True
+                else:
+                    if event.key == K_y:
+                        print("Again!")
+                        mac_gyver.reset()
+                        lvl.reset()
+                        end_game = False
+                    elif event.key == K_n:
+                        continue_game = False
+
+                display.draw(lvl, mac_gyver, images, screen)
 
 
 if __name__ == "__main__":
