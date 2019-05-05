@@ -17,13 +17,13 @@ from constants import *
 def main():
     pygame.init()
     # Setup the window (15*30, 15*30) : Resolution = 450,450
-    screen = pygame.display.set_mode((map_height * tile_size, map_length * tile_size))
+    screen = pygame.display.set_mode((map_length * tile_size, map_height * tile_size))
 
     config = loader.load_json("config.json")
     images = loader.Images(config)
 
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
-    mac_gyver = game_class.Character(lvl)
+    mac_gyver = game_class.Character(lvl, config["items"])
 
     display.draw(lvl,mac_gyver, images, screen)
 
@@ -46,12 +46,12 @@ def main():
                     elif event.key == K_DOWN:
                         mac_gyver.move_to(down)
 
-                    if mac_gyver.status == Win:
+                    if mac_gyver.status == WIN:
                         print("You win")
-                    elif mac_gyver.status == Lost:
+                    elif mac_gyver.status == LOST:
                         print("You loose")
 
-                    if mac_gyver.status != In_Maze:
+                    if mac_gyver.status != IN_MAZE:
                         print("\nDo you want to replay (y/n) ?")
                         end_game = True
                 else:

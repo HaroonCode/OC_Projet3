@@ -53,9 +53,12 @@ class Item:
 
 class Character:
     # Character
-    def __init__(self, lvl):
+    def __init__(self, lvl, items):
         self.lvl = lvl
         self.reset()
+        self.item_msg = {}
+        for item in items:
+            self.item_msg[item] = items[item].get("msg")  # returns None if not set
 
     def reset(self):
         # Initial position of the character (top left)
@@ -94,7 +97,7 @@ class Character:
             num_column = 0
             for case in line:
                 if case == "@":
-                    return (num_line, num_column)
+                    return num_line, num_column
                 num_column += 1
             num_line += 1
         print("Initial character's position not found")
@@ -109,6 +112,6 @@ class Character:
         # Character status - Win or loose
         if self.lvl.maze_map[self.pos_y][self.pos_x] == '.':
             if self.num_items == len(self.lvl.items):
-                return Win
-            return Lost
-        return In_Maze
+                return WIN
+            return LOST
+        return IN_MAZE

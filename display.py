@@ -1,6 +1,6 @@
 # Map drawing
 import pygame
-from constants import tile_size, Win, Lost
+from constants import tile_size, WIN, LOST
 
 
 def draw(lvl, mac_gyver, images, screen):
@@ -16,12 +16,12 @@ def draw(lvl, mac_gyver, images, screen):
             else:
                 screen.blit(images.floor, img_pos)
 
-            if case == "." and mac_gyver.status != Win:
+            if case == "." and mac_gyver.status != WIN:
                 screen.blit(images.guardian, img_pos)
 
             num_column += 1
         num_line += 1
-    if mac_gyver.status != Lost:
+    if mac_gyver.status != LOST:
         screen.blit(images.mac_gyver, mac_gyver.pixel_position)
 
     for item in lvl.items:

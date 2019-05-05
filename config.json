@@ -1,8 +1,8 @@
 {
   "bloc": "images/bloc.png",
+  "floor": "images/floor.png",
   "mac_gyver": "images/mac_gyver.png",
   "guardian": "images/guardian.png",
-  "floor": "images/floor.png",
 
   "items": {"needle": {"img": "images/needle.png"},
             "tube": {"img": "images/tube.png"},
