@@ -45,7 +45,7 @@ def main():
                         mac_gyver.move_to(up)
                     elif event.key == K_DOWN:
                         mac_gyver.move_to(down)
-
+                    screen.fill((0,0,0)) # Fill the screen after character movement
                     if mac_gyver.status == True:
                         print("Win")
                     elif mac_gyver.status == False:

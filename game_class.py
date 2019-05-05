@@ -20,6 +20,17 @@ class Level:
         self.maze_map[pos_y][pos_x] = "*"
         return pos_x, pos_y
 
+    def free_path(self, pos_x, pos_y, direction):
+        # Check if it's a valid path.
+        return (direction == left and pos_x > 0 and
+                self.maze_map[pos_y][pos_x-1] != "#" or
+                direction == right and pos_x < (map_length - 1) and
+                self.maze_map[pos_y][pos_x+1] != "#" or
+                direction == up and pos_y > 0 and
+                self.maze_map[pos_y-1][pos_x] != "#" or
+                direction == down and pos_y < (map_height - 1) and
+                self.maze_map[pos_y+1][pos_x] != "#")
+
 
 class Item:
     # Item class
@@ -45,18 +56,19 @@ class Character:
         self.num_items = 0
 
     def move_to(self, direction):
-        # move the character
-        if direction == left:
-            self.pos_x -= 1
-        elif direction == right:
-            self.pos_x += 1
-        elif direction == up:
-            self.pos_y -= 1
-        elif direction == down:
-            self.pos_y += 1
-        else:
-            print("error: direction")
-        self._collect_items()
+        if self.lvl.free_path(self.pos_x, self.pos_y, direction):
+            # move the character
+            if direction == left:
+                self.pos_x -= 1
+            elif direction == right:
+                self.pos_x += 1
+            elif direction == up:
+                self.pos_y -= 1
+            elif direction == down:
+                self.pos_y += 1
+            else:
+                print("error: direction")
+            self._collect_items()
 
     def _collect_items(self):
         # Collect an item
