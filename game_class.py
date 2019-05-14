@@ -28,7 +28,7 @@ class Level:
                 self.maze_map[pos_y+1][pos_x] != "#")
 
     def random_position(self):
-        # Random item position in map.
+        # Random item position in map. Help to use different position for each item.
         pos_x = 0
         pos_y = 0
         while self.maze_map[pos_y][pos_x] != " ":
