@@ -16,11 +16,40 @@ from constants import *
 
 def main():
     pygame.init()
+
     # Setup the window (15*30, 15*30) : Resolution = 450,450
     screen = pygame.display.set_mode((map_length * tile_size, map_height * tile_size))
 
     config = loader.load_json("config.json")
     images = loader.Images(config)
+
+    # Initialize the font
+    my_font = pygame.font.SysFont("Arial", 40)
+
+    # render text
+    start_message = my_font.render(config["start_message"], 1, (255, 0, 0))
+    # game_over = my_font.render(config["start_message"], 1, (255, 0, 0))
+
+    screen.blit(start_message, (200, 200))
+    # Refresh the screen
+    pygame.display.flip()
+
+    home_page = True
+
+    # Home page
+    while home_page:
+
+        # Limit the loop speed
+        pygame.time.Clock().tick(30)
+
+        for event in pygame.event.get():
+
+            if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+                home_page = False
+            elif event.type == KEYDOWN:
+
+                if event.key == K_RETURN:
+                    home_page = False
 
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
     mac_gyver = game_class.Character(lvl, config["items"])
