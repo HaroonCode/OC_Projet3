@@ -6,5 +6,6 @@
 
   "items": {"needle": {"img": "images/needle.png"},
             "tube": {"img": "images/tube.png"},
-            "ether": {"img": "images/ether.png"}}
+            "ether": {"img": "images/ether.png"}},
+  "start_message": "Press ENTER to start"
 }
