@@ -51,6 +51,8 @@ def main():
                 if event.key == K_RETURN:
                     home_page = False
 
+    # Créer fonction clean pour raffraichir le fonds avant la partie draw labyrinth
+
     lvl = game_class.Level(loader.map_from_file("map"), config["items"])
     mac_gyver = game_class.Character(lvl, config["items"])
 
